@@ -1,8 +1,8 @@
 {
-  "name": "vue.dev",
+  "name": "vue-google-maps-example",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "Joao",
+  "description": "A Vue.js 2 + vue-google-maps Example",
+  "author": "uebbi",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
