@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <div style="width: 100%; height: 300px">
       <google-map :center="center" :zoom="10" @g-rightclick="newMarker">
          <map-marker
@@ -16,7 +16,6 @@
 
 <script>
 export default {
-  name: 'app',
   data () {
     return {
       markers: [],
