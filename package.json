@@ -10,7 +10,11 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "vue": "^2.0.5"
+    "install": "^0.8.2",
+    "marker-clusterer-plus": "^2.1.4",
+    "npm": "^4.0.2",
+    "vue": "^2.0.5",
+    "vue2-google-maps": "^0.4.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

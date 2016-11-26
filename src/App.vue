@@ -1,11 +1,13 @@
 <template>
   <div>
     <div style="width: 100%; height: 300px">
-      <google-map :center="center" :zoom="10" @g-rightclick="newMarker">
+      <google-map :center="center" :zoom="10" @rightclick="newMarker">
          <map-marker
-           :position.sync="m.position"
+           :position="m.position"
            :opacity="m.opacity"
-           :draggable.sync="m.draggable"
+           :draggable="m.draggable"
+           @position_changed="updMarker(m, $event)"
+		   @dragend="logMarker(m)"
            v-for="m in markers"
            >
        </map-marker>
@@ -15,17 +17,14 @@
 </template>
 
 <script>
+import * as VueGoogleMaps from 'vue2-google-maps'
+
 export default {
   data () {
     return {
       markers: [],
       center: { lat: -19.8934596, lng: -44.0586543 }
     }
-  },
-  mounted () {
-    VueGoogleMap.load({
-      'key': 'AIzaSyCDoZwHDtJ0GKx-U9Y-SZwgL_5vNDeDBKs'
-    })
   },
   methods: {
     newMarker (mouseArgs) {
@@ -41,11 +40,20 @@ export default {
         enabled: true
       })
       return this.markers[this.markers.length - 1]
+    },
+    updMarker (m, event) {
+      m.position = {
+        lat: event.lat(),
+        lng: event.lng()
+      }
+    },
+    logMarker (m) {
+      console.log(m.position.lat, m.position.lng)
     }
   },
   components: {
-    'googleMap': VueGoogleMap.Map,
-    'MapMarker': VueGoogleMap.Marker
+    'googleMap': VueGoogleMaps.Map,
+    'MapMarker': VueGoogleMaps.Marker
   }
 }
 </script>
